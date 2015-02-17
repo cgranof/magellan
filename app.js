@@ -11,7 +11,8 @@ app.get('/', function(req, res) {
 	res.render('index', {
 		place: 'Seville', 
 		explorer: 'Magellan',
-		next: '/canary'
+		next: '/canary',
+		problem:false
 
 	});
 });
@@ -20,7 +21,8 @@ app.get('/canary', function(req, res) {
 	res.render('index', {
 		place: 'Canary', 
 		explorer: 'Magellan',
-		next: '/capeVerde'
+		next: '/capeVerde',
+		problem:false
 
 	});
 });
@@ -29,7 +31,8 @@ app.get('/capeVerde', function(req, res) {
 	res.render('index', {
 		place: 'Cape Verde', 
 		explorer: 'Magellan',
-		next: '/straitOfMagellan'
+		next: '/straitOfMagellan',
+		problem:false
 
 	});
 });
@@ -38,7 +41,8 @@ app.get('/straitOfMagellan', function(req, res) {
 	res.render('index', {
 		place: 'Straight of Magellan', 
 		explorer: 'Magellan',
-		next: '/guam'
+		next: '/guam',
+		problem:false
 
 	});
 });
@@ -47,7 +51,8 @@ app.get('/guam', function(req, res) {
 	res.render('index', {
 		place: 'Guam', 
 		explorer: 'Magellan',
-		next: '/philipines'
+		next: '/philipines',
+		problem: false
 
 	});
 });
@@ -56,9 +61,35 @@ app.get('/guam', function(req, res) {
 app.get('/philipines', function(req, res) {
 	res.render('index', {
 		place: 'Philipines', 
-		explorer: 'Magellan'
+		explorer: 'Magellan',
+		problem:false
 
 	});
+
+});
+
+// app.get('/place',function(req, res) {
+// 	res.render('index', {
+// 		var data = req.body;
+// 		place: data,
+// 		explorer: 'Magellan'
+// 	})
+// })
+app.get('/:place',function(req, res){
+	var data = req.params.place;
+	res.render('index',{
+		place: data,
+		explorer:'Magellan',
+		problem: true
+
+	})
+	
+
+})
+
+app.post('/unknown', function(req,res) {
+console.log(req.body);
+res.redirect('/place');
 });
 
 

@@ -1,8 +1,19 @@
 extends layout
 
 block content
+
 	h1 #{explorer}
 	h1 #{place}
 
 	if (next)
 		a(href=next) next
+
+	if (problem)
+		h3 Magellan did not travel here
+	else
+		h3 Magellan did travel here
+
+
+	form(action="/unknown", method="post")
+		input(type="text", name="place", placeholder="place...")
+		input(type="submit")
